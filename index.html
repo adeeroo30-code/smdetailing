@@ -33,28 +33,6 @@
     cursor: default;
   }
 
-  /* Custom cursor */
-  .cursor {
-    width: 10px; height: 10px;
-    background: var(--gold);
-    border-radius: 50%;
-    position: fixed;
-    pointer-events: none;
-    z-index: 99999;
-    transition: transform 0.1s ease;
-    mix-blend-mode: difference;
-  }
-  .cursor-ring {
-    width: 36px; height: 36px;
-    border: 1.5px solid var(--gold);
-    border-radius: 50%;
-    position: fixed;
-    pointer-events: none;
-    z-index: 99998;
-    transition: all 0.18s ease;
-    opacity: 0.6;
-  }
-
   /* Scrollbar */
   ::-webkit-scrollbar { width: 4px; }
   ::-webkit-scrollbar-track { background: var(--black); }
@@ -136,6 +114,7 @@
   /* ─── HERO ─── */
   #hero {
     height: 100vh;
+    min-height: 720px;
     position: relative;
     display: flex;
     align-items: center;
@@ -1022,30 +1001,207 @@
   }
 
   @media (max-width: 900px) {
-    #navbar { padding: 16px 24px; }
-    #navbar.scrolled { padding: 12px 24px; }
-    .nav-links { display: none; }
-    section { padding: 80px 24px; }
-    #about { grid-template-columns: 1fr; gap: 50px; }
-    .services-grid { grid-template-columns: 1fr; }
-    #contact { grid-template-columns: 1fr; gap: 40px; }
-    .stats-bar { padding: 30px 24px; }
+    #navbar {
+      padding: 14px 16px;
+      gap: 10px;
+    }
+
+    #navbar.scrolled {
+      padding: 10px 16px;
+    }
+
+    .nav-logo {
+      font-size: 1.2rem;
+      letter-spacing: 1px;
+      margin-left: auto;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: none;
+    }
+
+    #navbar .btn-primary {
+      padding: 10px 14px !important;
+      font-size: 0.72rem !important;
+      letter-spacing: 0.8px;
+      min-width: auto;
+      white-space: nowrap;
+    }
+
+    section { padding: 80px 20px; }
+
+    #hero {
+      min-height: 100svh;
+      height: auto;
+      padding-top: 110px;
+      padding-bottom: 60px;
+    }
+
+    .hero-content {
+      padding: 0 6px;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.68rem;
+      letter-spacing: 3px;
+      margin-bottom: 18px;
+    }
+
+    .hero-title {
+      font-size: clamp(2.4rem, 13vw, 4.2rem);
+      line-height: 1.06;
+    }
+
+    .hero-subtitle {
+      font-size: 0.98rem;
+      line-height: 1.75;
+      margin-top: 18px;
+      margin-bottom: 34px;
+    }
+
+    .hero-cta {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 14px;
+      width: 100%;
+      max-width: 320px;
+      margin: 0 auto;
+    }
+
+    .hero-cta .btn-primary,
+    .hero-cta .btn-ghost {
+      width: 100%;
+      padding: 14px 20px;
+      font-size: 0.88rem;
+    }
+
+    .scroll-indicator {
+      bottom: 18px;
+    }
+
+    .stats-bar {
+      padding: 28px 18px;
+      gap: 18px;
+    }
+
+    .stat-number {
+      font-size: 2.2rem;
+    }
+
+    .stat-label {
+      font-size: 0.72rem;
+      letter-spacing: 1px;
+    }
+
     .stat-divider { display: none; }
-    footer { padding: 40px 24px 24px; }
-    .footer-inner { flex-direction: column; text-align: center; }
-    .form-row { grid-template-columns: 1fr; }
-    .contact-form { padding: 30px 24px; }
-    .cta-features { gap: 20px; }
-    #hero { min-height: 100svh; }
-    .reviews-track-wrap { margin: 0 -24px; }
-    .about-cards-grid { grid-template-columns: 1fr; }
+
+    #about {
+      grid-template-columns: 1fr;
+      gap: 42px;
+    }
+
+    .about-card,
+    .contact-form {
+      padding: 28px 20px;
+    }
+
+    .about-cards-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .service-card {
+      padding: 42px 22px;
+    }
+
+    .service-number {
+      font-size: 3.6rem;
+      left: 18px;
+      top: 18px;
+    }
+
+    .reviews-track-wrap {
+      margin: 0 -20px;
+      padding: 10px 0;
+    }
+
+    .review-card {
+      width: 84vw;
+      max-width: 320px;
+      padding: 28px 22px;
+    }
+
+    #process .process-steps {
+      gap: 14px;
+    }
+
+    .process-step {
+      min-width: 100%;
+      max-width: 100%;
+      padding: 28px 10px;
+    }
+
+    .process-step::after {
+      display: none;
+    }
+
+    #cta {
+      padding: 75px 20px;
+    }
+
+    .cta-sub {
+      font-size: 0.96rem;
+      margin-bottom: 34px;
+    }
+
+    .cta-phone {
+      font-size: clamp(1.5rem, 8vw, 2.3rem);
+      letter-spacing: 1px;
+    }
+
+    .cta-features {
+      gap: 14px;
+      margin-top: 34px;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #contact {
+      grid-template-columns: 1fr;
+      gap: 36px;
+    }
+
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+
+    footer {
+      padding: 36px 20px 24px;
+    }
+
+    .footer-inner {
+      flex-direction: column;
+      text-align: center;
+      gap: 16px;
+    }
+
+    .footer-links {
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .footer-bottom {
+      flex-direction: column;
+      text-align: center;
+    }
   }
 </style>
 </head>
 <body>
-
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursorRing"></div>
 
 <canvas id="particles"></canvas>
 
@@ -1547,26 +1703,6 @@
 </footer>
 
 <script>
-// ─── CURSOR
-const cursor = document.getElementById('cursor');
-const ring = document.getElementById('cursorRing');
-let mx = 0, my = 0, rx = 0, ry = 0;
-document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
-function animateCursor() {
-  cursor.style.left = mx - 5 + 'px';
-  cursor.style.top = my - 5 + 'px';
-  rx += (mx - rx) * 0.12;
-  ry += (my - ry) * 0.12;
-  ring.style.left = rx - 18 + 'px';
-  ring.style.top = ry - 18 + 'px';
-  requestAnimationFrame(animateCursor);
-}
-animateCursor();
-document.querySelectorAll('a,button,.service-card,.review-card,.mini-card').forEach(el => {
-  el.addEventListener('mouseenter', () => { cursor.style.transform = 'scale(2)'; ring.style.transform = 'scale(1.5)'; ring.style.opacity = '0.3'; });
-  el.addEventListener('mouseleave', () => { cursor.style.transform = 'scale(1)'; ring.style.transform = 'scale(1)'; ring.style.opacity = '0.6'; });
-});
-
 // ─── NAVBAR SCROLL
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
