@@ -30,7 +30,7 @@
     font-family: 'Heebo', sans-serif;
     direction: rtl;
     overflow-x: hidden;
-    cursor: none;
+    cursor: default;
   }
 
   /* Custom cursor */
@@ -61,18 +61,25 @@
   ::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 2px; }
 
   /* ─── NAVBAR ─── */
-  nav {
-    position: fixed; top: 0; width: 100%; z-index: 1000;
+  #navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100000;
     padding: 20px 60px;
-    display: flex; align-items: center; justify-content: space-between;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
     transition: all 0.5s ease;
   }
-  nav.scrolled {
+
+  #navbar.scrolled {
     padding: 14px 60px;
     background: rgba(7,7,7,0.96);
     backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(201,168,76,0.15);
   }
+
   .nav-logo {
     font-family: 'Frank Ruhl Libre', serif;
     font-size: 1.9rem;
@@ -80,10 +87,30 @@
     letter-spacing: 2px;
     color: var(--white);
     text-decoration: none;
+    margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    line-height: 1;
   }
+
   .nav-logo span { color: var(--gold); }
-  .nav-links { display: flex; gap: 40px; list-style: none; }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    list-style: none;
+    margin-left: 40px;
+  }
+
+  .nav-links li {
+    display: flex;
+    align-items: center;
+  }
+
   .nav-links a {
+    display: inline-flex;
+    align-items: center;
     text-decoration: none;
     color: var(--silver);
     font-size: 0.9rem;
@@ -91,7 +118,9 @@
     letter-spacing: 1.5px;
     transition: color 0.3s;
     position: relative;
+    line-height: 1;
   }
+
   .nav-links a::after {
     content: '';
     position: absolute;
@@ -100,6 +129,7 @@
     background: var(--gold);
     transition: width 0.3s ease;
   }
+
   .nav-links a:hover { color: var(--gold); }
   .nav-links a:hover::after { width: 100%; }
 
@@ -120,7 +150,6 @@
                 linear-gradient(135deg, #070707 0%, #111 50%, #070707 100%);
   }
 
-  /* Animated grid lines */
   .hero-grid {
     position: absolute; inset: 0;
     background-image:
@@ -135,10 +164,8 @@
     100% { transform: translateY(80px); }
   }
 
-  /* Particle canvas */
-  #particles { position: absolute; inset: 0; }
+  #particles { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
 
-  /* Hero shine beam */
   .hero-beam {
     position: absolute;
     top: -20%;
@@ -213,7 +240,12 @@
     opacity: 0;
     animation: fadeUp 0.9s 0.9s ease forwards;
   }
+
   .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
     padding: 16px 46px;
     background: linear-gradient(135deg, var(--gold-dark), var(--gold), var(--gold-light));
     background-size: 200%;
@@ -237,9 +269,19 @@
   }
   .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 15px 40px rgba(201,168,76,0.4); }
   .btn-primary:hover::before { opacity: 1; }
-  .btn-primary span { position: relative; z-index: 1; }
+  .btn-primary span {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    line-height: 1;
+  }
 
   .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
     padding: 15px 40px;
     background: transparent;
     color: var(--gold);
@@ -257,7 +299,6 @@
     transform: translateY(-2px);
   }
 
-  /* Scroll indicator */
   .scroll-indicator {
     position: absolute;
     bottom: 40px;
@@ -286,7 +327,6 @@
     50% { opacity: 1; transform: scaleY(1); }
   }
 
-  /* ─── STATS BAR ─── */
   .stats-bar {
     background: var(--black3);
     border-top: 1px solid rgba(201,168,76,0.12);
@@ -331,7 +371,6 @@
     background: linear-gradient(to bottom, transparent, rgba(201,168,76,0.3), transparent);
   }
 
-  /* ─── SECTION BASE ─── */
   section { padding: 120px 60px; }
 
   .section-label {
@@ -357,7 +396,6 @@
     max-width: 600px;
   }
 
-  /* ─── ABOUT ─── */
   #about {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -439,7 +477,6 @@
   .mini-card h4 { font-size: 0.9rem; font-weight: 600; margin-bottom: 4px; }
   .mini-card p { font-size: 0.78rem; color: var(--text-muted); }
 
-  /* ─── SERVICES ─── */
   #services {
     background: var(--black);
     position: relative;
@@ -526,7 +563,6 @@
     color: #000;
   }
 
-  /* Gold accent line animate on hover */
   .service-card .accent-line {
     position: absolute;
     bottom: 0; right: 0;
@@ -536,7 +572,6 @@
   }
   .service-card:hover .accent-line { width: 100%; }
 
-  /* ─── REVIEWS ─── */
   #reviews {
     background: var(--black2);
     position: relative;
@@ -658,7 +693,6 @@
   .review-name { font-size: 0.9rem; font-weight: 600; }
   .review-date { font-size: 0.75rem; color: var(--text-muted); margin-top: 2px; }
 
-  /* ─── PROCESS ─── */
   #process {
     background: var(--black);
     text-align: center;
@@ -718,7 +752,6 @@
   .process-step h3 { font-size: 1rem; font-weight: 600; margin-bottom: 10px; }
   .process-step p { font-size: 0.83rem; color: var(--silver); line-height: 1.7; }
 
-  /* ─── CTA BAND ─── */
   #cta {
     background: linear-gradient(135deg, #0e0a00 0%, #1a1200 50%, #0e0a00 100%);
     border-top: 1px solid rgba(201,168,76,0.2);
@@ -788,7 +821,6 @@
     font-size: 0.7rem;
   }
 
-  /* ─── CONTACT ─── */
   #contact {
     background: var(--black2);
     display: grid;
@@ -893,7 +925,6 @@
     background: linear-gradient(135deg, var(--gold), var(--gold-light));
   }
 
-  /* ─── FOOTER ─── */
   footer {
     background: #030303;
     padding: 50px 60px 30px;
@@ -916,7 +947,12 @@
   }
   .footer-logo span { color: var(--gold); }
   .footer-tagline { color: var(--text-muted); font-size: 0.82rem; letter-spacing: 2px; margin-top: 6px; }
-  .footer-links { display: flex; gap: 30px; flex-wrap: wrap; }
+
+  .footer-links {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+  }
   .footer-links a {
     color: var(--text-muted);
     text-decoration: none;
@@ -924,6 +960,7 @@
     transition: color 0.3s;
   }
   .footer-links a:hover { color: var(--gold); }
+
   .footer-bottom {
     display: flex;
     justify-content: space-between;
@@ -941,7 +978,6 @@
   }
   .google-rating .stars { color: var(--gold); }
 
-  /* ─── ANIMATIONS ─── */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(30px); }
     to { opacity: 1; transform: translateY(0); }
@@ -951,7 +987,6 @@
     to { opacity: 1; }
   }
 
-  /* Reveal on scroll */
   .reveal {
     opacity: 0;
     transform: translateY(40px);
@@ -963,7 +998,6 @@
   .reveal-delay-3 { transition-delay: 0.3s; }
   .reveal-delay-4 { transition-delay: 0.4s; }
 
-  /* Gold pulse dot */
   .live-dot {
     display: inline-block;
     width: 8px; height: 8px;
@@ -987,10 +1021,9 @@
     50% { transform: scale(2); opacity: 0; }
   }
 
-  /* ─── MOBILE ─── */
   @media (max-width: 900px) {
-    nav { padding: 16px 24px; }
-    nav.scrolled { padding: 12px 24px; }
+    #navbar { padding: 16px 24px; }
+    #navbar.scrolled { padding: 12px 24px; }
     .nav-links { display: none; }
     section { padding: 80px 24px; }
     #about { grid-template-columns: 1fr; gap: 50px; }
@@ -1011,14 +1044,11 @@
 </head>
 <body>
 
-<!-- Custom cursor -->
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 
-<!-- Canvas particles -->
 <canvas id="particles"></canvas>
 
-<!-- ─── NAVBAR ─── -->
 <nav id="navbar">
   <a href="#" class="nav-logo">SM<span>.</span> Detailing</a>
   <ul class="nav-links">
@@ -1032,7 +1062,6 @@
   </a>
 </nav>
 
-<!-- ─── HERO ─── -->
 <section id="hero">
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
@@ -1060,7 +1089,6 @@
   </div>
 </section>
 
-<!-- ─── STATS ─── -->
 <div class="stats-bar reveal">
   <div class="stat-item">
     <span class="stat-number" data-count="18">0</span>
@@ -1083,7 +1111,6 @@
   </div>
 </div>
 
-<!-- ─── ABOUT ─── -->
 <section id="about">
   <div class="about-text reveal">
     <span class="section-label">מי אנחנו</span>
@@ -1091,7 +1118,7 @@
       מקצוענות שנראית<br><span style="color:var(--gold)">ומורגשת</span>
     </h2>
     <p class="section-subtitle">
-      SM Detailing בחיפה מתמחה בטיפול יסודי ומקצועי לרכב. סטאס ״עובד מהלב״ — כל לקוח מקבל יחס אישי, שקיפות מלאה ותוצאות שמדברות בעד עצמן. 
+      SM Detailing בחיפה מתמחה בטיפול יסודי ומקצועי לרכב. סטאס ״עובד מהלב״ — כל לקוח מקבל יחס אישי, שקיפות מלאה ותוצאות שמדברות בעד עצמן.
       לא סתם עוד מכון שטיפה — כאן הרכב שלכם חוזר לחיים.
     </p>
     <div class="about-cards-grid" style="margin-top:40px;">
@@ -1144,7 +1171,6 @@
   </div>
 </section>
 
-<!-- ─── SERVICES ─── -->
 <section id="services">
   <div class="services-header reveal">
     <span class="section-label">מה אנחנו מציעים</span>
@@ -1188,7 +1214,6 @@
   </div>
 </section>
 
-<!-- ─── REVIEWS ─── -->
 <section id="reviews">
   <div class="reviews-header reveal">
     <div class="reviews-rating-badge">
@@ -1313,7 +1338,6 @@
         </div>
       </div>
 
-      <!-- Duplicate for infinite scroll -->
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
         <p class="review-text">אחרי הפוליש לא הכרתי את הרכב שלי — הוא היה מבריק כמו מראה! כל פרט נצנץ, כאילו הרכב יצא עכשיו מהמפעל. ברור שהפוליש שלו עובד בנשמה.</p>
@@ -1325,6 +1349,7 @@
           </div>
         </div>
       </div>
+
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
         <p class="review-text">רוצה להמליץ בחום על החברה שעשתה דיטיילינג פנים לרכב שלי (טויוטה יאריס). העבודה היתה פשוט ברמה גבוהה מאוד.</p>
@@ -1336,6 +1361,7 @@
           </div>
         </div>
       </div>
+
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
         <p class="review-text">אני לא סומך על הסוס שלי לכולם, אבל נתתי לאלה את הרכב בעיניים עצומות. ליטשו והחזירו את מכסה המנוע בקרבון לחיים.</p>
@@ -1347,6 +1373,7 @@
           </div>
         </div>
       </div>
+
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
         <p class="review-text">הגעתי לליטוש פנסים. חשבתי שהם כבר הרוסים מהשמש, אבל לפחות ייראו קצת יותר טוב. התוצאות היו מרשימות!</p>
@@ -1358,6 +1385,7 @@
           </div>
         </div>
       </div>
+
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
         <p class="review-text">מקום אמין, אפשר לסמוך עליו, עבודה מאוד טובה, מחירים משתלמים לכל תקציב, הרכב חוזר כמו חדש!!!</p>
@@ -1369,11 +1397,11 @@
           </div>
         </div>
       </div>
+
     </div>
   </div>
 </section>
 
-<!-- ─── PROCESS ─── -->
 <section id="process">
   <div class="reveal" style="text-align:center">
     <span class="section-label">איך זה עובד</span>
@@ -1407,7 +1435,6 @@
   </div>
 </section>
 
-<!-- ─── CTA ─── -->
 <section id="cta">
   <p class="section-label" style="text-align:center;">מוכנים להתחיל?</p>
   <h2 class="cta-title reveal">תנו לרכב שלכם<br><span style="color:var(--gold)">את מה שהוא מגיע לו</span></h2>
@@ -1421,7 +1448,6 @@
   </div>
 </section>
 
-<!-- ─── CONTACT ─── -->
 <section id="contact">
   <div class="contact-info reveal">
     <span class="section-label">צור קשר</span>
@@ -1498,7 +1524,6 @@
   </div>
 </section>
 
-<!-- ─── FOOTER ─── -->
 <footer>
   <div class="footer-inner">
     <div>
